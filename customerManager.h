@@ -267,7 +267,7 @@ class CustomerManager{
 	     getline(ss,loyalityPoints,',');
 	     getline(ss,id,',');
 	     
-	     if(id==prevId and name==prevName ){
+	     if(id==prevId && name==prevName ){
 	     	return true;
 		 }
 		 
@@ -320,7 +320,7 @@ void deleteCustomerData(string Name,string Id){
 	    getline(ss,loyalityPoints,',');
 	    getline(ss,id,',');
 	    
-	    if(name==Name and id==Id){
+	    if(name==Name && id==Id){
 	    	flag=true;
 		}
 		else{
@@ -369,7 +369,7 @@ void updateCustomerData(string Name,string Id,string newDietryPrefences, int new
 	    getline(ss,loyalityPoints,',');
 	    getline(ss,id,',');
 	    
-	    if(name==Name and id==Id){
+	    if(name==Name && id==Id){
 	    	write<<Name<<","<<newDietryPrefences<<","<<newContact<<","<<newLoyalityPoints<<","<<Id<<endl;
 	    	
 	    	flag=true;
