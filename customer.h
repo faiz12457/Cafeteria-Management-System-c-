@@ -155,7 +155,7 @@ class Customer:public User{
         for (int j = 0; j < orderHistory[0]->getItemCount(); j++) {
             OrderItem* item = orderHistory[0]->getOrderItem(j); 
     
-            orderDetails += ","+item->getName() + " x " + to_string(item->getQuantity()) + " ($" + to_string(item->getTotalPrice()) + ")";
+            orderDetails += ","+item->getItemName() + " x " + to_string(item->getQuantity()) + " ($" + to_string(item->getTotalPrice()) + ")";
         }
 
         write << customerId<< orderDetails << "," <<orderHistory[0]->getTotalPrice()<<","<<orderHistory[0]->getOrderTime();

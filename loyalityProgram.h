@@ -14,7 +14,7 @@ class LoyalityProgram{
 			 }
 			 
 			 else{
-			 	 cout << "No loyalty points available for discount.\n";
+			 //s	 cout << "No loyalty points available for discount.\n";
 			 }
 			
 		}

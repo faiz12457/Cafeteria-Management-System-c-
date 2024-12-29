@@ -1,44 +1,33 @@
 #pragma once
 #include <iostream>
+#include "menuItem.h"
 using namespace std;
 
 
-class OrderItem{
+class OrderItem:public MenuItem{
 	private:
-	string itemName;
-    double price;
+
     int quantity;
     string customizations;
     
     public:
     	OrderItem(){
-    		itemName="";
-    		price=0.0;
+    		
     		quantity=0;
     		customizations="";
 		}
 		
 		OrderItem(string name,double price,int quantity,string custom=""){
-			itemName=name;
-			this->price=price;
+			 setItemName(name);
+			setItemPrice(price);
 			this->quantity=quantity;
 			customizations=custom;
 		}
 		
-		void setName(string name){
-			itemName=name;
-		}
-		
-		string getName(){
-			return itemName;
-		}
-		
-		void setPrice(double p){
-			price=p;
-		}
+
         
 		int getTotalPrice(){
-			return (price*quantity);
+			return (getItemPrice()*quantity);
 		}		
 		
 		void setQuantity(int q){
@@ -59,7 +48,7 @@ class OrderItem{
 		
 		
 		void displayOrderItem(){
-			cout <<"-"<<getName() <<" x "<<getQuantity()<<", Customizations:"<<(customizations.empty()? "None":customizations)<<"= $"<<getTotalPrice()<<endl;
+			cout <<"-"<<getItemName() <<" x "<<getQuantity()<<", Customizations:"<<(customizations.empty()? "None":customizations)<<"= $"<<getTotalPrice()<<endl;
 			
 		}
 		
