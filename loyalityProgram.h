@@ -9,7 +9,7 @@ class LoyalityProgram{
 		void applyLoyalityPoints(Customer *c, double &totalPrice){
 			 double discount=0;
 			 
-			 if(c->redeemLoyaltyPoints(discount)){
+			 if(c->redeemLoyaltyPoints(discount,totalPrice)){
 			 	totalPrice-=discount;
 			 }
 			 
@@ -19,3 +19,4 @@ class LoyalityProgram{
 			
 		}
 };
+

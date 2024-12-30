@@ -75,11 +75,22 @@ class Customer:public User{
 
 		
 		
-		  bool redeemLoyaltyPoints(double& discount) {
+		  bool redeemLoyaltyPoints(double& discount,double totalPrice) {
            if (loyalityPoints > 0) {
-        	
+        	   
+        	   if(loyalityPoints>=totalPrice){
+        	   	discount=totalPrice;
+        	   	loyalityPoints-=totalPrice;
+			   }
+			           
+			else{
+			           		           
             discount = loyalityPoints; 
-          loyalityPoints = 0; 
+            loyalityPoints = 0; 
+			           	
+			 }
+        	           
+        
             return true;
         }
         return false; 
