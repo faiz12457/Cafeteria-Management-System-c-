@@ -18,6 +18,14 @@ class InventoryManager{
 			
 		}
 		
+	~InventoryManager(){
+		
+		for(int i=0;inventoryCount;i++){
+			delete inventory[i];
+		}
+			
+		}
+		
 		void addInventoryitem(Inventory *item){
 			if(inventoryCount<100){
 				inventory[inventoryCount++]=item;
