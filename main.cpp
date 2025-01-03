@@ -1,4 +1,5 @@
 #include<iostream>
+#include<string>
 using namespace std;
 #include"menu.h"
 #include "order.h"
@@ -8,9 +9,11 @@ using namespace std;
 #include "menuItem.h"
 #include "loyalityProgram.h"
 #include "functions.h"
-#include<string>
+#include "inventoryManager.h"
+#include "inventory.h"
 
-void readMenuData(Menu &menu){
+
+void readMenuData(Menu &menu,InventoryManager &inventoryManager){
 	string FN="menuItem.csv";
 	
 	int size=0;
@@ -34,6 +37,10 @@ void readMenuData(Menu &menu){
 	     MenuItem *m=new MenuItem(name,category,stoi(stock),stod(price),stoi(id));
 	     menu.addCategory(category);
 	     menu.addItem(m);
+	    Inventory *i=new Inventory(name,stoi(stock));
+	    inventoryManager.addInventoryitem(i);
+	    inventoryManager.writeData(name,stoi(stock));
+	     
 	}
 	
 	checkData.close();
@@ -72,12 +79,12 @@ void readCustomerData(CustomerManager &Manager){
  
 
 int main() {
-	
+	InventoryManager inventoryManager;
 	 Menu menu;
 	 CustomerManager Manager;
 	 Order order;
 	 
-	 readMenuData(menu); // extract menu item to menu for display
+	 readMenuData(menu,inventoryManager); // extract menu item to menu for display
 	 readCustomerData(Manager); // extract data from customer file
 	 
 	 int choice;
@@ -87,7 +94,7 @@ int main() {
 	 	cout<<"Enter 1 for add item to the menu\n";
 	 	cout<<"Enter 2 for Modify item from the menu\n";
 	 	cout<<"Enter 3 for display  menu\n";
-	 	cout<<"Enter 4 for delete an item from menu\n";
+	 	cout<<"Enter 4 for delete an item from menu and Inventory\n";
 	 	cout<<"Enter 5 for Register Customer\n";
 	 	cout<<"Enter 6 for Modify Customer details\n";
 	 	cout<<"Enter 7 for delete a Customer\n";
@@ -99,7 +106,7 @@ int main() {
 	 	cin.ignore();
 	 	switch(choice){
 	 		case 1:{
-	 			userInputAddItem(menu);
+	 			userInputAddItem(menu,inventoryManager);
 				break;
 			 }
 	 			
@@ -109,7 +116,7 @@ int main() {
 	 			cout<<"Enter name of the Item to modify: ";
 	 			getline(cin,name);
 	 			
-			 	menu.modify_item_by_name(name);
+			 	menu.modify_item_by_name(name,inventoryManager);
 			 	
 	 	    break;
 			 }
@@ -128,6 +135,7 @@ int main() {
 				cin>>id;
 			menu.removeItem(name,id);
 			menu.deleteMenuData(name,id);
+			inventoryManager.deleteInventoryItem(name);
 				break;
 			}
 			
@@ -164,7 +172,7 @@ int main() {
 			
 			case 9:{
 		
-			orderItem(menu,Manager);
+			orderItem(menu,Manager,inventoryManager);
 				break;
 			}
 			

@@ -1,4 +1,4 @@
-Veggie Burger,Vegetarian,8.99,25,1
+Veggie Burger,Vegetarian,8.99,5,1
 Veggie Wrap,Vegetarian,7.49,20,2
 Grilled Cheese Sandwich,Vegetarian,5.99,30,3
 Vegetable Stir Fry,Vegetarian,9.49,18,4
@@ -17,4 +17,5 @@ Grilled Salmon Plate,Specialty,13.49,10,16
 Cappuccino,Drinks,3.49,20,18
 Fresh Fruit Smoothie,Drinks,9.99,25,19
 Lemonade,Drinks,2.99,35,20
-Zinger Burger,Burgers,25,3,21
+Zinger Burger,Burgers,25,30,21
+Tikka Pizza,Pizzas,35,20,22

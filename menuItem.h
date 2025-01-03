@@ -29,7 +29,7 @@ class MenuItem{
 				itemStock=stock;
 				this->category=category;
 				this->id=id;
-			//	id=itemId++;
+
 		}
 			
 			void increment_sales(int quantity){

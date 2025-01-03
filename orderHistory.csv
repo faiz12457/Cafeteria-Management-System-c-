@@ -16,3 +16,13 @@ CUST1,Zinger Burger x 1 ($25),19,Sun Dec 29 21:14:15 2024
 CUST1,Veggie Burger x 2 ($17),17,Sun Dec 29 22:03:19 2024
 CUST1,Zinger Burger x 500 ($12500),12500,Mon Dec 30 12:00:41 2024
 CUST1,Zinger Burger x 1 ($25),0,Mon Dec 30 12:02:05 2024
+CUST1,Zinger Burger x 4 ($100),0,Wed Jan 01 11:33:23 2025
+CUST1,Veggie Burger x 3 ($26),0,Fri Jan 03 15:35:01 2025
+CUST1,Zinger Burger x 1 ($25),0,Fri Jan 03 21:45:07 2025
+CUST3,Veggie Burger x 2 ($17),17,Fri Jan 03 22:22:06 2025
+CUST3,Veggie Burger x 10 ($89),89,Fri Jan 03 22:24:50 2025
+CUST3,Veggie Burger x 3 ($26),Zinger Burger x 1 ($25),50,Fri Jan 03 22:38:42 2025
+CUST3,Veggie Burger x 1 ($8),7,Fri Jan 03 22:44:12 2025
+CUST3,Veggie Burger x 2 ($17),17,Fri Jan 03 23:07:55 2025
+CUST3,Veggie Burger x 2 ($17),Zinger Burger x 20 ($500),517,Fri Jan 03 23:09:50 2025
+CUST3,Zinger Burger x 1 ($25),15,Fri Jan 03 23:10:39 2025

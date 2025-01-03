@@ -15,6 +15,7 @@ class Order {
 		int orderId;
 		string paymentStatus;
 		string time;
+	//	bool isDiscount=false;
 	
 	
 	public:

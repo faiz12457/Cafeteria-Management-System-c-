@@ -10,6 +10,8 @@ using namespace std;
 #include <ctime>
 #include<string>
 #include"loyalityProgram.h"
+#include "inventoryManager.h"
+#include "inventory.h"
 
 
 int checkLoyalityPoints(string Name){
@@ -107,7 +109,7 @@ int generateMenuItemUniqueID(int& currentID) {
 
 
 
-void userInputAddItem(Menu &menu) {
+void userInputAddItem(Menu &menu,InventoryManager &inventoryManager) {
    
     string name, category;
     int stock,id;
@@ -140,6 +142,7 @@ void userInputAddItem(Menu &menu) {
                 MenuItem *item = new MenuItem(name, category,stock, price,id);
                 menu.addItem(item); 
                 menu.writeMenuData(name,category,stock,price,item->getId());
+                inventoryManager.writeData(name,stock);
                 cout << "Item added successfully!" << endl; 
                 cout << "----------------------------------------\n";
                 
@@ -180,7 +183,7 @@ void registerCustomer(CustomerManager &manager){
 
 
 
- void orderItem(Menu &menu,CustomerManager &manager){
+ void orderItem(Menu &menu,CustomerManager &manager,InventoryManager &inventoryManager){
  	Customer *c;
  	MenuItem *m;
  	
@@ -206,6 +209,15 @@ void registerCustomer(CustomerManager &manager){
 			if(m!=nullptr){
 				cout<<"Enter quantity of the item: ";
 				cin>>quantity;
+				while(quantity>m->getItemStock()){
+				
+					cout<<"This much quanity is not available\n";
+					cout<<"Enter less quantity \n";
+					cin>>quantity;
+			}
+				inventoryManager.ModifyItem(m->getItemName(),(m->getItemStock()-quantity));
+				m->setItemStock((m->getItemStock()-quantity));
+				menu.UpdateMenuData(m->getItemName(),m->getId(),m->getCategory(),m->getItemStock(),m->getItemPrice());
 				cin.ignore();
 				cout<<"Enter Customizations if u want to else enter none: ";
 				getline(cin,customization);
@@ -235,16 +247,27 @@ void registerCustomer(CustomerManager &manager){
 						
 				cout<<"Enter id of the item to order :";
 				cin>>id;
+					m=menu.searchItemById(id);
+						if(m!=nullptr){
 				cout<<"Enter quantity of the item: ";
 				cin>>quantity;
 				cin.ignore();
+				while(quantity>m->getItemStock()){
+				
+					cout<<"This much quanity is not available\n";
+					cout<<"Enter less quantity \n";
+					cin>>quantity;
+			}
+						inventoryManager.ModifyItem(m->getItemName(),(m->getItemStock()-quantity));
+				m->setItemStock((m->getItemStock()-quantity));
+				menu.UpdateMenuData(m->getItemName(),m->getId(),m->getCategory(),m->getItemStock(),m->getItemPrice());
 				cout<<"Enter Customizations if u want to else enter none: ";
 				getline(cin,customization);
 	
 				
-				m=menu.searchItemById(id);
+			
 				
-			if(m!=nullptr){
+		
 				order->addItem(m,quantity,customization);
 				
 			}

@@ -5,6 +5,7 @@
 #include<string>
 using namespace std;
 #include "menuitem.h"
+#include "inventoryManager.h"
 
 
 
@@ -158,7 +159,7 @@ class Menu{
 			
 			
 		
-			bool modify_item_by_name(string& name) {
+			bool modify_item_by_name(string& name,InventoryManager &inventoryManager) {
                  MenuItem *singleItem=searchItem(name);
                 
 				 if (singleItem!=nullptr) {
@@ -206,6 +207,7 @@ class Menu{
                 	
                 	singleItem->setItemStock(stock);
                 	UpdateMenuData(singleItem->getItemName(),singleItem->getId(),singleItem->getCategory(),stock,singleItem->getItemPrice());
+                	inventoryManager.ModifyItem(singleItem->getItemName(),stock);
 					break;
 				}
 //                case 4: {
